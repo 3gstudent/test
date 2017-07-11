@@ -2,4 +2,4 @@
    <a>
       <execute>Get-Process</execute>
    </a>
-  </command>
+</command>
