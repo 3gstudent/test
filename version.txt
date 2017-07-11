@@ -1,4 +1,5 @@
-<?xml version="1.0"?>
-<execute>$host</execute>
-  
-
+<command>
+   <a>
+      <execute>Get-Process</execute>
+   </a>
+  </command>
