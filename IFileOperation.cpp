@@ -48,6 +48,6 @@ int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,i
 		}
 		CoUninitialize();
 	}
-	MessageBoxA(0, "Hello World", "Hello World", 0);
+//	MessageBoxA(0, "Hello World", "Hello World", 0);
 	return 0;
 }
