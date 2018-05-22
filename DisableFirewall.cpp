@@ -1,6 +1,6 @@
 //Author: 3gstudent
 //Use to disable Windows Firewall with normal user permissions.
-//Be similar to a way of bypassing UAC
+//Expand on IFileOperation of UAC bypass.
 
 #include <Strsafe.h>
 #include <windows.h>
